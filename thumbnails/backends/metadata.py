@@ -59,7 +59,7 @@ class DatabaseBackend(BaseBackend):
         return Source.objects.create(name=name)
 
     def get_source(self, name):
-        return Source.objects.get(name=name)
+        return Source.objects.get_or_create(name=name)[0]
 
     def delete_source(self, name):
         return Source.objects.filter(name=name).delete()
